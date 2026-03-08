@@ -140,13 +140,6 @@ const COURSE_READING_TIPS = [
   "En fin de syllabe (batchim), ㄱ, ㄷ, ㅂ se prononcent souvent comme k, t, p (sans explosion).",
   "ㄹ en milieu de mot se rapproche du « r » ; en batchim ou avant ㄹ il peut sonner « l ».",
   "Les voyelles verticales (ㅣ, ㅏ, ㅓ) se placent à droite de la consonne ; les horizontales (ㅡ, ㅗ, ㅜ) en dessous.",
-  "Quand deux voyelles se combinent (ㅗ + ㅏ = ㅘ wa), la lecture est souvent la somme des deux : ㅘ = wa, ㅝ = wo.",
-  "Le batchim (consonne finale) peut se lier à la syllabe suivante : 막내 [망내] (mang-nae). C'est la liaison (연음).",
-  "ㅅ, ㅆ en batchim se prononcent « t » (ex. 옷 = ot). ㅈ, ㅊ, ㅌ en batchim aussi : « t ».",
-  "Plusieurs consonnes en batchim : seule une est prononcée (ex. 닭 = dak, ㅎ et ㄱ muets comme batchim final).",
-  "ㄴ et ㅁ en batchim gardent leur son (n, m) : 산 = san, 감 = gam.",
-  "Pour les syllabes avec ㅖ, ㅒ : en pratique ㅖ se dit souvent « ye » comme ㅔ dans beaucoup de mots.",
-  "Les voyelles ㅐ et ㅔ se prononcent aujourd'hui presque pareil (entre « è » et « é ») en coréen standard.",
 ];
 
 const COURSE_TRANSLATION_TIPS = [
@@ -156,32 +149,6 @@ const COURSE_TRANSLATION_TIPS = [
   "Les niveaux de politesse changent la forme du verbe (해요, 합니다, 해) ; repère la fin du verbe pour le sens.",
   "Les mots d’origine sino-coréenne (한자어) ressemblent souvent au chinois ; ça peut aider pour deviner le sens.",
   "Pour les noms, vérifie si c’est un mot seul ou un mot composé (ex. 학교 = école, 학생 = élève).",
-  "은/는 marque le thème (sujet ou topic) ; 이/가 marque le sujet grammatical.",
-  "을/를 est la particule d'objet (나는 밥을 먹어요 = je mange du riz).",
-  "에 = lieu ou moment ; 에서 = lieu où l'action se déroule.",
-  "Les adjectifs coréens se conjuguent comme des verbes (예쁘다 → 예뻐요).",
-  "하다 après un nom sino-coréen forme un verbe : 공부하다 = étudier.",
-  "Le négatif : 안 + verbe (안 가요), ou verbe + 지 않다 (몰라요).",
-  "와/과 = avec (et) ; 랑/이랑 plus familier (친구와, 친구랑).",
-  "Mots de liaison : 그래서 (donc), 그런데 (mais), 하지만 (cependant).",
-];
-
-const COURSE_SYLLABLE_STRUCTURE = [
-  { pattern: "C + V", example: "가", roman: "ga", note: "Consonne + voyelle" },
-  { pattern: "C + V + C", example: "간", roman: "gan", note: "Avec batchim (finale)" },
-  { pattern: "C + VV", example: "과", roman: "gwa", note: "Voyelle composée" },
-  { pattern: "C + VV + C", example: "관", roman: "gwan", note: "Composée + batchim" },
-  { pattern: "ㅇ + V", example: "아", roman: "a", note: "ㅇ muet en début" },
-];
-
-const COURSE_PARTICLES = [
-  { particle: "은 / 는", usage: "Thème (topic)", ex: "저는 학생이에요" },
-  { particle: "이 / 가", usage: "Sujet", ex: "날씨가 좋아요" },
-  { particle: "을 / 를", usage: "Objet", ex: "밥을 먹어요" },
-  { particle: "에", usage: "Lieu / temps", ex: "학교에 가요" },
-  { particle: "에서", usage: "Lieu (action)", ex: "집에서 자요" },
-  { particle: "와 / 과", usage: "Avec (et)", ex: "친구와 만나요" },
-  { particle: "의", usage: "Possessif", ex: "제 이름" },
 ];
 
 const PHRASE_QUESTIONS_PER_LEVEL = 20;
@@ -321,126 +288,6 @@ const PHRASE_SEED = [
   ["아직", "Encore (négatif)"],
   ["더", "Plus"],
   ["덜", "Moins"],
-  // +100 phrases (facile → composé)
-  ["좋아요", "C'est bon"],
-  ["재미있어요", "C'est amusant"],
-  ["어려워요", "C'est difficile"],
-  ["쉬워요", "C'est facile"],
-  ["맛없어요", "Ce n'est pas bon"],
-  ["추워요", "Il fait froid"],
-  ["더워요", "Il fait chaud"],
-  ["날씨가 좋아요", "Il fait beau"],
-  ["비가 오네요", "Il pleut (constat)"],
-  ["눈이 오네요", "Il neige (constat)"],
-  ["몇 시에요?", "Quelle heure est-il ?"],
-  ["오늘 뭐 해요?", "Qu'est-ce que tu fais aujourd'hui ?"],
-  ["내일 만나요", "On se voit demain"],
-  ["어디서 만나요?", "Où on se retrouve ?"],
-  ["뭐 드실래요?", "Que voulez-vous prendre ?"],
-  ["이거 주세요", "Donnez-moi ça"],
-  ["저거 주세요", "Donnez-moi ça (là-bas)"],
-  ["얼마예요?", "C'est combien ?"],
-  ["비싸요", "C'est cher"],
-  ["싸요", "C'est pas cher"],
-  ["할인해요?", "Vous faites des réductions ?"],
-  ["영수증 주실 수 있어요?", "Pouvez-vous me donner l'addition ?"],
-  ["화장실 어디예요?", "Où sont les toilettes ?"],
-  ["여기 앉아도 돼요?", "Je peux m'asseoir ici ?"],
-  ["사진 찍어도 돼요?", "Je peux prendre une photo ?"],
-  ["늦어서 죄송해요", "Désolé d'être en retard"],
-  ["괜찮으세요?", "Ça va ? (poliment)"],
-  ["잘 지내세요", "Portez-vous bien"],
-  ["다음에 만나요", "À la prochaine"],
-  ["연락할게요", "Je vous contacterai"],
-  ["전화 주세요", "Appelez-moi"],
-  ["문자 보내 주세요", "Envoyez-moi un message"],
-  ["기다릴게요", "J'attendrai"],
-  ["빨리 오세요", "Venez vite"],
-  ["천천히 오세요", "Prenez votre temps"],
-  ["조심히 가세요", "Allez-y prudemment"],
-  ["수고 많으셨어요", "Merci pour vos efforts"],
-  ["고생하셨어요", "Merci pour le travail"],
-  ["덕분에 잘 했어요", "J'ai réussi grâce à vous"],
-  ["도움이 많이 됐어요", "Ça m'a beaucoup aidé"],
-  ["설명해 주셔서 감사해요", "Merci de m'avoir expliqué"],
-  ["알려 주셔서 감사해요", "Merci de me l'avoir dit"],
-  ["기다려 주셔서 감사해요", "Merci d'avoir attendu"],
-  ["한국에 왜 왔어요?", "Pourquoi êtes-vous venu en Corée ?"],
-  ["한국어를 얼마나 배웠어요?", "Depuis combien de temps apprenez-vous le coréen ?"],
-  ["어디서 한국어를 배워요?", "Où apprenez-vous le coréen ?"],
-  ["한국 음식을 좋아해요?", "Vous aimez la cuisine coréenne ?"],
-  ["한국 드라마 봐요?", "Vous regardez les dramas coréens ?"],
-  ["K-pop 좋아해요?", "Vous aimez la K-pop ?"],
-  ["한국에 언제까지 있어요?", "Jusqu'à quand restez-vous en Corée ?"],
-  ["한국 여행은 어땠어요?", "Comment était votre voyage en Corée ?"],
-  ["다음에 또 올게요", "Je reviendrai"],
-  ["여기 처음 와요", "C'est ma première fois ici"],
-  ["혼자 왔어요", "Je suis venu(e) seul(e)"],
-  ["친구랑 왔어요", "Je suis venu(e) avec un ami"],
-  ["가족이랑 왔어요", "Je suis venu(e) avec ma famille"],
-  ["일 때문에 왔어요", "Je suis venu(e) pour le travail"],
-  ["여행하러 왔어요", "Je suis venu(e) en voyage"],
-  ["공부하러 왔어요", "Je suis venu(e) pour étudier"],
-  ["여기서 살아요", "J'habite ici"],
-  ["서울에 살아요", "J'habite à Séoul"],
-  ["한국에 산 지 얼마나 됐어요?", "Depuis combien de temps vivez-vous en Corée ?"],
-  ["한국 생활은 어때요?", "Comment est la vie en Corée ?"],
-  ["한국 음식은 맛있어요?", "La nourriture coréenne est bonne ?"],
-  ["김치 먹어 봤어요?", "Vous avez déjà goûté le kimchi ?"],
-  ["불고기 좋아해요?", "Vous aimez le bulgogi ?"],
-  ["라면 자주 먹어요?", "Vous mangez souvent des ramyeon ?"],
-  ["커피 한잔 할래요?", "On prend un café ?"],
-  ["점심 먹었어요?", "Vous avez déjeuné ?"],
-  ["저녁 같이 먹을래요?", "On dîne ensemble ?"],
-  ["내가 살게요", "C'est moi qui paie"],
-  ["같이 나눠 낼까요?", "On partage l'addition ?"],
-  ["다음에 제가 살게요", "La prochaine fois c'est moi qui paie"],
-  ["오늘 일정이 있어요?", "Vous avez des plans aujourd'hui ?"],
-  ["시간 있으시면 만나요", "Si vous avez le temps, on se voit"],
-  ["바쁘시면 괜찮아요", "Si vous êtes occupé, ce n'est pas grave"],
-  ["편하실 때 연락 주세요", "Contactez-moi quand ça vous arrange"],
-  ["내일 가능해요?", "C'est possible demain ?"],
-  ["이번 주말에 뭐 해요?", "Qu'est-ce que vous faites ce week-end ?"],
-  ["주말에 보통 뭐 해요?", "Qu'est-ce que vous faites d'habitude le week-end ?"],
-  ["취미가 뭐예요?", "Quel est votre hobby ?"],
-  ["운동 좋아해요?", "Vous aimez le sport ?"],
-  ["영화 좋아해요?", "Vous aimez les films ?"],
-  ["책 읽는 걸 좋아해요?", "Vous aimez lire ?"],
-  ["요리할 줄 알아요?", "Vous savez cuisiner ?"],
-  ["운전할 줄 알아요?", "Vous savez conduire ?"],
-  ["한국어로 말해 주세요", "Parlez en coréen, s'il vous plaît"],
-  ["천천히 말씀해 주세요", "Parlez lentement, s'il vous plaît"],
-  ["다시 한번 말해 주세요", "Répétez encore une fois"],
-  ["무슨 뜻이에요?", "Qu'est-ce que ça veut dire ?"],
-  ["이걸 한국어로 뭐라고 해요?", "Comment on dit ça en coréen ?"],
-  ["발음이 어려워요", "La prononciation est difficile"],
-  ["문법이 헷갈려요", "La grammaire me semble confuse"],
-  ["단어를 외우고 있어요", "J'apprends le vocabulaire par cœur"],
-  ["매일 연습해요", "Je m'entraîne tous les jours"],
-  ["한국 친구가 있어요", "J'ai un ami coréen"],
-  ["한국 친구랑 한국어로 이야기해요", "Je parle coréen avec mon ami coréen"],
-  ["아직 잘 못해요", "Je ne parle pas encore bien"],
-  ["조금씩 배우고 있어요", "J'apprends petit à petit"],
-  ["열심히 공부하고 있어요", "J'étudie avec assiduité"],
-  ["한국어가 점점 나아지고 있어요", "Mon coréen s'améliore peu à peu"],
-  ["도와주시면 감사하겠어요", "Je vous serais reconnaissant de m'aider"],
-  ["궁금한 게 있으면 물어봐도 돼요?", "Je peux vous poser des questions si j'en ai ?"],
-  ["실수해도 괜찮아요", "Ce n'est pas grave de faire des erreurs"],
-  ["천천히 배우고 있어요", "J'apprends à mon rythme"],
-  ["한국 문화에 관심이 있어요", "Je m'intéresse à la culture coréenne"],
-  ["한국 역사를 공부하고 있어요", "J'étudie l'histoire de la Corée"],
-  ["다음 주에 시험이 있어요", "J'ai un examen la semaine prochaine"],
-  ["오늘 회의가 있어요", "J'ai une réunion aujourd'hui"],
-  ["내일 아침에 일찍 일어나야 해요", "Je dois me lever tôt demain matin"],
-  ["저녁에 약속이 있어요", "J'ai un rendez-vous ce soir"],
-  ["주말에 쉬고 싶어요", "Je voudrais me reposer ce week-end"],
-  ["피곤해서 일찍 잘 거예요", "Je suis fatigué, je vais me coucher tôt"],
-  ["날씨가 좋으면 밖에 나갈 거예요", "S'il fait beau, je sortirai"],
-  ["비가 오면 집에 있을 거예요", "S'il pleut, je resterai à la maison"],
-  ["시간이 있으면 같이 영화 볼래요?", "Si tu as le temps, on regarde un film ensemble ?"],
-  ["가능하면 내일 만나요", "Si possible, on se voit demain"],
-  ["문제가 있으면 말해 주세요", "S'il y a un problème, dites-le-moi"],
-  ["궁금한 점이 있으면 언제든 물어보세요", "Si vous avez des questions, n'hésitez pas à demander"],
 ];
 
 function buildPhraseBank() {
@@ -1444,9 +1291,7 @@ const allHangul = [...new Set(questions.map(q => q.hangul))];
 // Romanisation (intonation) pour l’affichage du quiz traduction
 const hangulToRoman = Object.fromEntries(questions.map((q) => [q.hangul, q.answer]));
 const translationToHangul = Object.fromEntries(translationBank.map((x) => [x.translation, x.hangul]));
-const hangulToTranslation = Object.fromEntries(translationBank.map((x) => [x.hangul, x.translation]));
 const phraseTranslationToHangul = Object.fromEntries(phraseBank.map((x) => [x.translation, x.hangul]));
-const hangulToTranslationPhrase = Object.fromEntries(phraseBank.map((x) => [x.hangul, x.translation]));
 
 const WORD_QUESTIONS_PER_LEVEL = 50;
 const WORD_QUIZ_SIZE = 15;
@@ -1787,9 +1632,6 @@ export default function HangulQuiz() {
     .section-btn:hover { background: rgba(160,120,255,0.15); border-color: rgba(160,120,255,0.5); }
     .level-btn:hover { background: rgba(160,120,255,0.2); border-color: rgba(160,120,255,0.5); }
     .level-grid { display: grid; gap: 8px; max-width: 520px; width: 100%; grid-template-columns: repeat(5, 1fr); }
-    .nav-actions { display: flex; flex-direction: column; gap: 10px; width: 100%; max-width: 520px; margin-bottom: 24px; padding: 14px 18px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; }
-    .nav-actions .next-btn { margin-top: 0; }
-    .nav-actions .next-btn:last-child { margin-bottom: 0; }
     .prompt-translation { background: rgba(167,139,250,0.12); border: 1px solid rgba(167,139,250,0.3); border-radius: 16px; padding: 20px 24px; margin: 16px 0 24px; text-align: center; font-size: 22px; font-family: 'Noto Serif', Georgia, serif; color: #e0d8ff; line-height: 1.4; }
     .result-row-translation { flex-direction: column; align-items: stretch; gap: 6px; }
     .result-row-translation .result-hangul-line { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
@@ -1808,7 +1650,6 @@ export default function HangulQuiz() {
       .result-row { padding: 8px 10px; font-size: 14px; }
     }
     @media (max-width: 480px) {
-      .nav-actions { padding: 12px 14px; gap: 8px; margin-bottom: 20px; border-radius: 14px; }
       .card { padding: 20px 16px; border-radius: 16px; }
       .hangul-char { font-size: 48px; margin: 8px 0 20px; }
       .hangul-char.hangul-char-small { font-size: 26px; }
@@ -1830,25 +1671,12 @@ export default function HangulQuiz() {
     .letter-card .letter-roman { font-family: 'Rajdhani', sans-serif; font-size: 12px; color: rgba(255,255,255,0.7); }
     .letter-card .letter-name { font-size: 10px; color: rgba(255,255,255,0.45); margin-top: 2px; }
     .tip-item { background: rgba(255,255,255,0.04); border-left: 3px solid #a78bfa; padding: 10px 14px; margin-bottom: 8px; border-radius: 0 8px 8px 0; color: rgba(255,255,255,0.85); font-size: 14px; line-height: 1.5; }
-    .syllable-row { display: flex; align-items: center; gap: 12px; padding: 10px 14px; margin-bottom: 6px; background: rgba(255,255,255,0.04); border-radius: 10px; flex-wrap: wrap; }
-    .syllable-row .syllable-pattern { font-family: 'Rajdhani', sans-serif; font-weight: 700; color: #a78bfa; min-width: 90px; }
-    .syllable-row .syllable-example { font-size: 22px; color: #fff; min-width: 36px; text-align: center; }
-    .syllable-row .syllable-roman { color: rgba(255,255,255,0.7); font-size: 14px; }
-    .syllable-row .syllable-note { color: rgba(255,255,255,0.5); font-size: 13px; margin-left: auto; }
-    .particle-row { padding: 10px 14px; margin-bottom: 8px; background: rgba(255,255,255,0.04); border-radius: 10px; border-left: 3px solid rgba(167,139,250,0.5); }
-    .particle-row .particle-name { font-family: 'Rajdhani', sans-serif; font-weight: 700; color: #a78bfa; margin-bottom: 4px; }
-    .particle-row .particle-usage { font-size: 13px; color: rgba(255,255,255,0.6); margin-bottom: 4px; }
-    .particle-row .particle-ex { font-size: 14px; color: rgba(255,255,255,0.85); }
     @media (max-width: 480px) {
       .letter-grid { grid-template-columns: repeat(auto-fill, minmax(52px, 1fr)); gap: 6px; }
       .letter-card { padding: 8px; }
       .letter-card .letter-char { font-size: 22px; }
       .letter-card .letter-roman { font-size: 11px; }
       .tip-item { font-size: 13px; padding: 8px 12px; }
-      .syllable-row { padding: 8px 12px; gap: 8px; font-size: 13px; }
-      .syllable-row .syllable-pattern { min-width: 70px; font-size: 12px; }
-      .syllable-row .syllable-example { font-size: 18px; }
-      .particle-row { padding: 8px 12px; font-size: 13px; }
     }
   `;
 
@@ -1931,18 +1759,6 @@ export default function HangulQuiz() {
                 ))}
               </div>
             </div>
-            <div className="course-section">
-              <div className="course-section-title">Structure des syllabes</div>
-              <div className="course-subtitle">Formes de base (C = consonne, V = voyelle)</div>
-              {COURSE_SYLLABLE_STRUCTURE.map((s, i) => (
-                <div key={i} className="syllable-row">
-                  <span className="syllable-pattern">{s.pattern}</span>
-                  <span className="syllable-example">{s.example}</span>
-                  <span className="syllable-roman">{s.roman}</span>
-                  <span className="syllable-note">{s.note}</span>
-                </div>
-              ))}
-            </div>
           </div>
 
           <div className="card" style={{ padding: 24, marginBottom: 20 }}>
@@ -1954,25 +1770,11 @@ export default function HangulQuiz() {
             </div>
           </div>
 
-          <div className="card" style={{ padding: 24, marginBottom: 20 }}>
+          <div className="card" style={{ padding: 24 }}>
             <div className="course-section">
               <div className="course-section-title">Conseils pour la traduction</div>
               {COURSE_TRANSLATION_TIPS.map((tip, i) => (
                 <div key={i} className="tip-item">{tip}</div>
-              ))}
-            </div>
-          </div>
-
-          <div className="card" style={{ padding: 24 }}>
-            <div className="course-section">
-              <div className="course-section-title">Particules courantes</div>
-              <div className="course-subtitle">Rôle et exemples</div>
-              {COURSE_PARTICLES.map((p, i) => (
-                <div key={i} className="particle-row">
-                  <div className="particle-name">{p.particle}</div>
-                  <div className="particle-usage">{p.usage}</div>
-                  <div className="particle-ex">{p.ex}</div>
-                </div>
               ))}
             </div>
           </div>
@@ -1987,11 +1789,9 @@ export default function HangulQuiz() {
       <div className="root-wrap" style={rootStyle}>
         <style>{injectedStyles}</style>
         <div style={headerStyle}>Guess the word · Choisir un niveau</div>
-        <div className="nav-actions">
-          <button className="next-btn" onClick={() => setView("menu")}>
-            ← Retour
-          </button>
-        </div>
+        <button className="next-btn" onClick={() => setView("menu")} style={{ marginBottom: 16 }}>
+          ← Retour
+        </button>
         <div className="level-grid" style={levelGridStyle}>
           {WORD_LEVELS.map((level) => {
             const s = scores[level];
@@ -2021,14 +1821,12 @@ export default function HangulQuiz() {
       <div className="root-wrap" style={rootStyle}>
         <style>{injectedStyles}</style>
         <div style={headerStyle}>Guess the translation · Choisir un niveau</div>
-        <div className="nav-actions">
-          <button className="next-btn" onClick={() => setView("menu")}>
-            ← Retour
-          </button>
-          <button className="next-btn" onClick={() => setView("all-results")}>
-            Voir tous les résultats & global
-          </button>
-        </div>
+        <button className="next-btn" onClick={() => setView("menu")} style={{ marginBottom: 16 }}>
+          ← Retour
+        </button>
+        <button className="next-btn" onClick={() => setView("all-results")} style={{ marginBottom: 24 }}>
+          Voir tous les résultats & global
+        </button>
         <div className="level-grid" style={levelGridStyle}>
           {LEVELS.map((level) => {
             const s = scores[level];
@@ -2059,14 +1857,12 @@ export default function HangulQuiz() {
       <div className="root-wrap" style={rootStyle}>
         <style>{injectedStyles}</style>
         <div style={headerStyle}>Guess the phrase · Choisir un niveau</div>
-        <div className="nav-actions">
-          <button className="next-btn" onClick={() => setView("menu")}>
-            ← Retour
-          </button>
-          <button className="next-btn" onClick={() => setView("all-results-phrase")}>
-            Voir tous les résultats & global
-          </button>
-        </div>
+        <button className="next-btn" onClick={() => setView("menu")} style={{ marginBottom: 16 }}>
+          ← Retour
+        </button>
+        <button className="next-btn" onClick={() => setView("all-results-phrase")} style={{ marginBottom: 24 }}>
+          Voir tous les résultats & global
+        </button>
         <div className="level-grid" style={levelGridStyle}>
           {PHRASE_LEVELS.map((level) => {
             const s = scores[level];
@@ -2097,14 +1893,12 @@ export default function HangulQuiz() {
       <div className="root-wrap" style={rootStyle}>
         <style>{injectedStyles}</style>
         <div style={headerStyle}>Résultats phrase · par niveau & global</div>
-        <div className="nav-actions">
-          <button className="next-btn" onClick={() => setView("menu")}>
-            ← Menu
-          </button>
-          <button className="next-btn" onClick={() => setView("phrase-levels")}>
-            ← Retour aux niveaux phrase
-          </button>
-        </div>
+        <button className="next-btn" onClick={() => setView("menu")} style={{ marginBottom: 16 }}>
+          ← Menu
+        </button>
+        <button className="next-btn" onClick={() => setView("phrase-levels")} style={{ marginBottom: 16 }}>
+          ← Retour aux niveaux phrase
+        </button>
         <div className="card" style={{ marginBottom: 16, padding: 20 }}>
           <div style={{ color: "#a78bfa", fontWeight: 700, marginBottom: 8 }}>Global</div>
           <div style={{ color: "rgba(255,255,255,0.8)" }}>
@@ -2135,11 +1929,9 @@ export default function HangulQuiz() {
       <div className="root-wrap" style={rootStyle}>
         <style>{injectedStyles}</style>
         <div style={headerStyle}>Résultats traduction · par niveau & global</div>
-        <div className="nav-actions">
-          <button className="next-btn" onClick={() => setView("menu")}>
-            ← Menu
-          </button>
-        </div>
+        <button className="next-btn" onClick={() => setView("menu")} style={{ marginBottom: 16 }}>
+          ← Menu
+        </button>
         <div className="card" style={{ marginBottom: 16, padding: 20 }}>
           <div style={{ color: "#a78bfa", fontWeight: 700, marginBottom: 8 }}>Global</div>
           <div style={{ color: "rgba(255,255,255,0.8)" }}>
@@ -2182,14 +1974,12 @@ export default function HangulQuiz() {
           <div style={{ marginBottom: 16, color: "rgba(255,255,255,0.6)" }}>
             Meilleur score ce niveau: {s.best ?? lastScore}
           </div>
-          <div className="nav-actions" style={{ marginBottom: 0 }}>
-            <button className="next-btn" onClick={backToTranslationLevels}>
-              ← Retour aux niveaux
-            </button>
-            <button className="next-btn" onClick={() => setView("all-results")}>
-              Voir tous les résultats & global
-            </button>
-          </div>
+          <button className="next-btn" onClick={backToTranslationLevels} style={{ marginBottom: 8 }}>
+            ← Retour aux niveaux
+          </button>
+          <button className="next-btn" onClick={() => setView("all-results")}>
+            Voir tous les résultats & global
+          </button>
         </div>
       </div>
     );
@@ -2214,14 +2004,12 @@ export default function HangulQuiz() {
           <div style={{ marginBottom: 16, color: "rgba(255,255,255,0.6)" }}>
             Meilleur score ce niveau: {s.best ?? lastScore}
           </div>
-          <div className="nav-actions" style={{ marginBottom: 0 }}>
-            <button className="next-btn" onClick={backToPhraseLevels}>
-              ← Retour aux niveaux
-            </button>
-            <button className="next-btn" onClick={() => setView("all-results-phrase")}>
-              Voir tous les résultats & global
-            </button>
-          </div>
+          <button className="next-btn" onClick={backToPhraseLevels} style={{ marginBottom: 8 }}>
+            ← Retour aux niveaux
+          </button>
+          <button className="next-btn" onClick={() => setView("all-results-phrase")}>
+            Voir tous les résultats & global
+          </button>
         </div>
       </div>
     );
@@ -2293,25 +2081,18 @@ export default function HangulQuiz() {
                   if (opt === q.answer) cls += " correct";
                   else if (opt === selected && selected !== q.answer) cls += " wrong";
                 }
-                const showReveal = selected !== null;
-                const showTranslation = (isTranslation || isPhrase) && showReveal;
+                const showTranslation = (isTranslation || isPhrase) && selected !== null;
                 const optHangul = showTranslation && q?.type === "hangul-to-translation" ? (isPhrase ? phraseTranslationToHangul[opt] : translationToHangul[opt]) : showTranslation && q?.type === "translation-to-hangul" ? opt : null;
                 const optRoman = optHangul && !isPhrase ? (hangulToRoman[optHangul] ?? "") : "";
-                const optTranslation = showTranslation && (q?.type === "hangul-to-translation" ? opt : (isPhrase ? (hangulToTranslationPhrase[optHangul] ?? "") : (hangulToTranslation[optHangul] ?? "")));
-                const hangulLine = showTranslation && optHangul ? (q?.type === "hangul-to-translation" ? optHangul : null) : null;
-                const wordLecture = showReveal && isWord ? (q?.type === "roman-to-hangul" ? (hangulToRoman[opt] ?? "") : opt) : null;
+                const translationLine = showTranslation && optHangul
+                  ? (q?.type === "hangul-to-translation" ? `${optHangul}${optRoman ? ` (${optRoman})` : ""}` : optRoman ? `(${optRoman})` : "")
+                  : null;
                 return (
                   <button key={opt} className={cls} onClick={() => handleSelect(opt)} disabled={selected !== null}>
                     <span style={{ display: "block" }}>{opt}</span>
-                    {showReveal && (
-                      <span style={{ display: "block", fontSize: "0.8em", opacity: 0.9, marginTop: 6, textAlign: "left" }}>
-                        {hangulLine != null && <span style={{ display: "block", marginBottom: 2, fontSize: "1.05em" }}>{hangulLine}</span>}
-                        {(optRoman || wordLecture) && (
-                          <span style={{ display: "block", color: "rgba(255,255,255,0.75)", marginBottom: 2 }}>Lecture : {(optRoman || wordLecture)}</span>
-                        )}
-                        {optTranslation && optTranslation !== "" && (
-                          <span style={{ display: "block", color: "rgba(255,255,255,0.75)" }}>Traduction : {optTranslation}</span>
-                        )}
+                    {translationLine != null && translationLine !== "" && (
+                      <span style={{ display: "block", fontSize: "0.75em", opacity: 0.85, marginTop: 4 }}>
+                        {translationLine}
                       </span>
                     )}
                   </button>
@@ -2372,38 +2153,36 @@ export default function HangulQuiz() {
               })}
             </div>
 
-            <div className="nav-actions" style={{ marginBottom: 0, marginTop: 8 }}>
-              {isWord ? (
-                <>
-                  <button className="next-btn" onClick={handleRestartWord}>
-                    🔄 Recommencer (même niveau)
-                  </button>
-                  {wordLevel != null && (
-                    <button className="next-btn" onClick={backToWordLevels}>
-                      ← Retour aux niveaux
-                    </button>
-                  )}
-                </>
-              ) : isTranslation ? (
-                <>
-                  <button className="next-btn" onClick={handleRestartTranslation}>
-                    🔄 Recommencer (même niveau)
-                  </button>
-                  <button className="next-btn" onClick={backToTranslationLevels}>
+            {isWord ? (
+              <>
+                <button className="next-btn" onClick={handleRestartWord} style={{ marginBottom: 8 }}>
+                  🔄 Recommencer (même niveau)
+                </button>
+                {wordLevel != null && (
+                  <button className="next-btn" onClick={backToWordLevels}>
                     ← Retour aux niveaux
                   </button>
-                </>
-              ) : (
-                <>
-                  <button className="next-btn" onClick={handleRestartPhrase}>
-                    🔄 Recommencer (même niveau)
-                  </button>
-                  <button className="next-btn" onClick={backToPhraseLevels}>
-                    ← Retour aux niveaux
-                  </button>
-                </>
-              )}
-            </div>
+                )}
+              </>
+            ) : isTranslation ? (
+              <>
+                <button className="next-btn" onClick={handleRestartTranslation} style={{ marginBottom: 8 }}>
+                  🔄 Recommencer (même niveau)
+                </button>
+                <button className="next-btn" onClick={backToTranslationLevels}>
+                  ← Retour aux niveaux
+                </button>
+              </>
+            ) : (
+              <>
+                <button className="next-btn" onClick={handleRestartPhrase} style={{ marginBottom: 8 }}>
+                  🔄 Recommencer (même niveau)
+                </button>
+                <button className="next-btn" onClick={backToPhraseLevels}>
+                  ← Retour aux niveaux
+                </button>
+              </>
+            )}
           </>
         )}
       </div>
