@@ -184,143 +184,6 @@ const COURSE_PARTICLES = [
   { particle: "의", usage: "Possessif", ex: "제 이름" },
 ];
 
-// Nouveaux jeux dédiés
-// 1) Ordre des mots
-const WORD_ORDER_QUESTIONS = [
-  {
-    fr: "Je vais à l'école aujourd'hui.",
-    context: "Phrase de base avec temps + lieu + verbe.",
-    options: ["오늘 학교에 가요", "학교에 오늘 가요", "가요 오늘 학교에"],
-    correctIndex: 0,
-  },
-  {
-    fr: "Je mange du riz à la maison.",
-    context: "Lieu d'action + objet + verbe.",
-    options: ["집에서 밥을 먹어요", "밥을 집에서 먹어요", "먹어요 집에서 밥을"],
-    correctIndex: 0,
-  },
-  {
-    fr: "Je rencontre un ami demain.",
-    context: "Temps + objet (ami) + verbe.",
-    options: ["내일 친구를 만나요", "친구를 내일 만나요", "만나요 내일 친구를"],
-    correctIndex: 0,
-  },
-  {
-    fr: "Il fait froid aujourd'hui.",
-    context: "Temps + sujet (temps) + adjectif verbal.",
-    options: ["오늘 날씨가 추워요", "날씨가 오늘 추워요", "추워요 오늘 날씨가"],
-    correctIndex: 0,
-  },
-  {
-    fr: "Je regarde un film le week-end.",
-    context: "Temps (week-end) + objet + verbe.",
-    options: ["주말에 영화를 봐요", "영화를 주말에 봐요", "봐요 주말에 영화를"],
-    correctIndex: 0,
-  },
-];
-
-// 2) Niveaux de politesse / registres
-const POLITENESS_QUESTIONS = [
-  {
-    context: "Tu parles à un ami du même âge.",
-    fr: "Tu vas bien ?",
-    options: ["잘 지내?", "잘 지내요?", "잘 지내십니까?"],
-    correctIndex: 0,
-  },
-  {
-    context: "Tu parles à un professeur.",
-    fr: "Merci beaucoup.",
-    options: ["고마워요", "감사합니다", "고마워"],
-    correctIndex: 1,
-  },
-  {
-    context: "Tu t'adresses à un client ou une personne plus âgée.",
-    fr: "Bienvenue.",
-    options: ["어서 와", "어서 오세요", "어서 와요"],
-    correctIndex: 1,
-  },
-  {
-    context: "Tu parles à ton petit frère / ta petite sœur.",
-    fr: "Ne t'inquiète pas.",
-    options: ["걱정하지 마", "걱정하지 마세요", "걱정하지 마요"],
-    correctIndex: 0,
-  },
-  {
-    context: "Annonce dans le métro (registre formel).",
-    fr: "Nous arrivons à Séoul.",
-    options: ["서울에 도착해요", "서울에 도착합니다", "서울에 도착해"],
-    correctIndex: 1,
-  },
-];
-
-// 3) Particules & grammaire
-const PARTICLE_QUESTIONS = [
-  {
-    sentence: "저__ 학생이에요.",
-    fr: "Moi, je suis étudiant(e).",
-    options: ["는", "이", "를", "에"],
-    correctIndex: 0,
-    explanation: "저는 : particule de thème (topic).",
-  },
-  {
-    sentence: "날씨__ 좋아요.",
-    fr: "Le temps est beau.",
-    options: ["은", "가", "을", "에서"],
-    correctIndex: 1,
-    explanation: "날씨가 : particule de sujet (ce qui est beau).",
-  },
-  {
-    sentence: "밥__ 먹어요.",
-    fr: "Je mange du riz.",
-    options: ["을", "은", "에", "이"],
-    correctIndex: 0,
-    explanation: "밥을 : particule d'objet direct.",
-  },
-  {
-    sentence: "학교__ 가요.",
-    fr: "Je vais à l'école.",
-    options: ["에", "에서", "을", "는"],
-    correctIndex: 0,
-    explanation: "학교에 : direction / destination.",
-  },
-  {
-    sentence: "집__ 자요.",
-    fr: "Je dors à la maison.",
-    options: ["에서", "에", "을", "는"],
-    correctIndex: 0,
-    explanation: "집에서 : lieu où l'action se déroule.",
-  },
-];
-
-// 4) Dictée vers Hangul (à partir du français)
-const DICTATION_QUESTIONS = [
-  {
-    fr: "Bonjour",
-    options: ["안녕하세요", "감사합니다", "죄송합니다", "안녕히 가세요"],
-    correctIndex: 0,
-  },
-  {
-    fr: "Merci beaucoup",
-    options: ["미안해요", "괜찮아요", "감사합니다", "잘 가요"],
-    correctIndex: 2,
-  },
-  {
-    fr: "Je m'appelle …",
-    options: ["이름이 뭐예요?", "제 이름은 ... 입니다", "어디 가요?", "잘 지냈어요?"],
-    correctIndex: 1,
-  },
-  {
-    fr: "Où sont les toilettes ?",
-    options: ["화장실이 어디예요?", "얼마예요?", "여기 앉아도 돼요?", "어디서 만나요?"],
-    correctIndex: 0,
-  },
-  {
-    fr: "On se voit demain",
-    options: ["오늘 뭐 해요?", "내일 만나요", "다음 주에 봐요", "지금 가요"],
-    correctIndex: 1,
-  },
-];
-
 const PHRASE_QUESTIONS_PER_LEVEL = 20;
 const PHRASE_QUIZ_SIZE = 15;
 const TOTAL_PHRASE_LEVELS = 50;
@@ -1716,22 +1579,6 @@ export default function HangulQuiz() {
   const [levelScores, setLevelScores] = useState(getLevelScores);
   const [phraseLevelScores, setPhraseLevelScores] = useState(getPhraseLevelScores);
   const [globalStats, setGlobalStats] = useState(getGlobalStats);
-  // États pour les nouveaux petits quiz
-  const [wordOrderIndex, setWordOrderIndex] = useState(0);
-  const [wordOrderSelected, setWordOrderSelected] = useState(null);
-  const [wordOrderScore, setWordOrderScore] = useState(0);
-
-  const [politenessIndex, setPolitenessIndex] = useState(0);
-  const [politenessSelected, setPolitenessSelected] = useState(null);
-  const [politenessScore, setPolitenessScore] = useState(0);
-
-  const [particleIndex, setParticleIndex] = useState(0);
-  const [particleSelected, setParticleSelected] = useState(null);
-  const [particleScore, setParticleScore] = useState(0);
-
-  const [dictationIndex, setDictationIndex] = useState(0);
-  const [dictationSelected, setDictationSelected] = useState(null);
-  const [dictationScore, setDictationScore] = useState(0);
 
   const isWord = view === "word" || view === "word-done";
   const isTranslation = view === "translation" || view === "translation-done";
@@ -2082,7 +1929,6 @@ export default function HangulQuiz() {
   }
 
   if (view === "word-order-info") {
-    const total = WORD_ORDER_QUESTIONS.length;
     return (
       <div className="root-wrap" style={rootStyle}>
         <style>{injectedStyles}</style>
@@ -2092,22 +1938,8 @@ export default function HangulQuiz() {
             Ce mode proposera des phrases en français et plusieurs versions en coréen avec des ordres de mots différents.
             Le but sera de choisir la phrase coréenne avec l&apos;ordre correct (Sujet · Compléments · Verbe).
           </p>
-          <p style={{ marginTop: 12, opacity: 0.9 }}>
-            Mini-quiz actuel : {total} questions à choix multiples.
-          </p>
         </div>
         <div className="nav-actions">
-          <button
-            className="next-btn"
-            onClick={() => {
-              setWordOrderIndex(0);
-              setWordOrderSelected(null);
-              setWordOrderScore(0);
-              setView("word-order-quiz");
-            }}
-          >
-            Commencer le quiz →
-          </button>
           <button className="next-btn" onClick={() => setView("menu")}>
             ← Retour au menu
           </button>
@@ -2117,7 +1949,6 @@ export default function HangulQuiz() {
   }
 
   if (view === "politeness-info") {
-    const total = POLITENESS_QUESTIONS.length;
     return (
       <div className="root-wrap" style={rootStyle}>
         <style>{injectedStyles}</style>
@@ -2127,22 +1958,8 @@ export default function HangulQuiz() {
             Ce mode proposera un contexte (ami, professeur, personne plus âgée…) et plusieurs versions d&apos;une même phrase
             en coréen. Il faudra choisir le niveau de politesse / registre approprié (반말, forme -요, formel, etc.).
           </p>
-          <p style={{ marginTop: 12, opacity: 0.9 }}>
-            Mini-quiz actuel : {total} questions à choix multiples.
-          </p>
         </div>
         <div className="nav-actions">
-          <button
-            className="next-btn"
-            onClick={() => {
-              setPolitenessIndex(0);
-              setPolitenessSelected(null);
-              setPolitenessScore(0);
-              setView("politeness-quiz");
-            }}
-          >
-            Commencer le quiz →
-          </button>
           <button className="next-btn" onClick={() => setView("menu")}>
             ← Retour au menu
           </button>
@@ -2152,7 +1969,6 @@ export default function HangulQuiz() {
   }
 
   if (view === "particles-info") {
-    const total = PARTICLE_QUESTIONS.length;
     return (
       <div className="root-wrap" style={rootStyle}>
         <style>{injectedStyles}</style>
@@ -2162,22 +1978,8 @@ export default function HangulQuiz() {
             Ce mode se concentrera sur les particules coréennes (은/는, 이/가, 을/를, 에, 에서, 와/과, etc.). Les phrases auront un
             trou à remplir, et il faudra choisir la particule correcte en fonction du rôle du mot.
           </p>
-          <p style={{ marginTop: 12, opacity: 0.9 }}>
-            Mini-quiz actuel : {total} questions à choix multiples.
-          </p>
         </div>
         <div className="nav-actions">
-          <button
-            className="next-btn"
-            onClick={() => {
-              setParticleIndex(0);
-              setParticleSelected(null);
-              setParticleScore(0);
-              setView("particles-quiz");
-            }}
-          >
-            Commencer le quiz →
-          </button>
           <button className="next-btn" onClick={() => setView("menu")}>
             ← Retour au menu
           </button>
@@ -2187,7 +1989,6 @@ export default function HangulQuiz() {
   }
 
   if (view === "dictation-info") {
-    const total = DICTATION_QUESTIONS.length;
     return (
       <div className="root-wrap" style={rootStyle}>
         <style>{injectedStyles}</style>
@@ -2197,395 +1998,11 @@ export default function HangulQuiz() {
             Ce mode partira d&apos;une phrase ou d&apos;un mot en français. Le but sera de retrouver la bonne écriture en Hangul
             parmi plusieurs propositions (comme une dictée à choix multiples).
           </p>
-          <p style={{ marginTop: 12, opacity: 0.9 }}>
-            Mini-quiz actuel : {total} questions à choix multiples.
-          </p>
         </div>
         <div className="nav-actions">
-          <button
-            className="next-btn"
-            onClick={() => {
-              setDictationIndex(0);
-              setDictationSelected(null);
-              setDictationScore(0);
-              setView("dictation-quiz");
-            }}
-          >
-            Commencer le quiz →
-          </button>
           <button className="next-btn" onClick={() => setView("menu")}>
             ← Retour au menu
           </button>
-        </div>
-      </div>
-    );
-  }
-
-  if (view === "word-order-quiz") {
-    const total = WORD_ORDER_QUESTIONS.length;
-    const qwo = WORD_ORDER_QUESTIONS[wordOrderIndex];
-    const doneWO = wordOrderIndex >= total;
-    return (
-      <div className="root-wrap" style={rootStyle}>
-        <style>{injectedStyles}</style>
-        <div style={headerStyle}>Quiz · Ordre des mots</div>
-        <div className="card">
-          {!doneWO ? (
-            <>
-              <div style={{ marginBottom: 8, color: "rgba(255,255,255,0.6)", fontFamily: "'Rajdhani',sans-serif", fontSize: 13, letterSpacing: 2 }}>
-                Question {wordOrderIndex + 1} / {total}
-              </div>
-              <div style={{ marginBottom: 12, fontSize: 18, color: "#e5e7eb" }}>
-                {qwo.fr}
-              </div>
-              <div style={{ marginBottom: 16, fontSize: 13, color: "rgba(255,255,255,0.6)" }}>{qwo.context}</div>
-              {qwo.options.map((opt, idx) => {
-                let cls = "option-btn";
-                if (wordOrderSelected !== null) {
-                  if (idx === qwo.correctIndex) cls += " correct";
-                  else if (idx === wordOrderSelected && idx !== qwo.correctIndex) cls += " wrong";
-                }
-                return (
-                  <button
-                    key={opt}
-                    className={cls}
-                    onClick={() => {
-                      if (wordOrderSelected !== null) return;
-                      setWordOrderSelected(idx);
-                      if (idx === qwo.correctIndex) {
-                        setWordOrderScore((s) => s + 1);
-                      }
-                    }}
-                    disabled={wordOrderSelected !== null}
-                  >
-                    {opt}
-                  </button>
-                );
-              })}
-              {wordOrderSelected !== null && (
-                <div className="nav-actions" style={{ marginTop: 16 }}>
-                  <button
-                    className="next-btn"
-                    onClick={() => {
-                      const next = wordOrderIndex + 1;
-                      setWordOrderIndex(next);
-                      setWordOrderSelected(null);
-                    }}
-                  >
-                    {wordOrderIndex + 1 >= total ? "Voir le score →" : "Question suivante →"}
-                  </button>
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              <div style={{ textAlign: "center", marginBottom: 20 }}>
-                <div className="score-circle">
-                  <div style={{ color: "#fff", fontSize: 32, fontWeight: 700 }}>{wordOrderScore}</div>
-                  <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 13 }}>/ {total}</div>
-                </div>
-                <div style={{ marginTop: 12, color: "#a78bfa", fontSize: 18, fontWeight: 700 }}>
-                  {wordOrderScore === total
-                    ? "Parfait !"
-                    : wordOrderScore >= Math.round(total * 0.7)
-                    ? "Très bien !"
-                    : "Continue à t'entraîner !"}
-                </div>
-              </div>
-              <div className="nav-actions">
-                <button
-                  className="next-btn"
-                  onClick={() => {
-                    setWordOrderIndex(0);
-                    setWordOrderSelected(null);
-                    setWordOrderScore(0);
-                  }}
-                >
-                  🔄 Recommencer
-                </button>
-                <button className="next-btn" onClick={() => setView("menu")}>
-                  ← Retour au menu
-                </button>
-              </div>
-            </>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  if (view === "politeness-quiz") {
-    const total = POLITENESS_QUESTIONS.length;
-    const qp = POLITENESS_QUESTIONS[politenessIndex];
-    const doneP = politenessIndex >= total;
-    return (
-      <div className="root-wrap" style={rootStyle}>
-        <style>{injectedStyles}</style>
-        <div style={headerStyle}>Quiz · Niveaux de politesse</div>
-        <div className="card">
-          {!doneP ? (
-            <>
-              <div style={{ marginBottom: 8, color: "rgba(255,255,255,0.6)", fontFamily: "'Rajdhani',sans-serif", fontSize: 13, letterSpacing: 2 }}>
-                Question {politenessIndex + 1} / {total}
-              </div>
-              <div style={{ marginBottom: 8, fontSize: 15, color: "rgba(255,255,255,0.7)" }}>{qp.context}</div>
-              <div style={{ marginBottom: 16, fontSize: 18, color: "#e5e7eb" }}>{qp.fr}</div>
-              {qp.options.map((opt, idx) => {
-                let cls = "option-btn";
-                if (politenessSelected !== null) {
-                  if (idx === qp.correctIndex) cls += " correct";
-                  else if (idx === politenessSelected && idx !== qp.correctIndex) cls += " wrong";
-                }
-                return (
-                  <button
-                    key={opt}
-                    className={cls}
-                    onClick={() => {
-                      if (politenessSelected !== null) return;
-                      setPolitenessSelected(idx);
-                      if (idx === qp.correctIndex) {
-                        setPolitenessScore((s) => s + 1);
-                      }
-                    }}
-                    disabled={politenessSelected !== null}
-                  >
-                    {opt}
-                  </button>
-                );
-              })}
-              {politenessSelected !== null && (
-                <div className="nav-actions" style={{ marginTop: 16 }}>
-                  <button
-                    className="next-btn"
-                    onClick={() => {
-                      const next = politenessIndex + 1;
-                      setPolitenessIndex(next);
-                      setPolitenessSelected(null);
-                    }}
-                  >
-                    {politenessIndex + 1 >= total ? "Voir le score →" : "Question suivante →"}
-                  </button>
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              <div style={{ textAlign: "center", marginBottom: 20 }}>
-                <div className="score-circle">
-                  <div style={{ color: "#fff", fontSize: 32, fontWeight: 700 }}>{politenessScore}</div>
-                  <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 13 }}>/ {total}</div>
-                </div>
-                <div style={{ marginTop: 12, color: "#a78bfa", fontSize: 18, fontWeight: 700 }}>
-                  {politenessScore === total
-                    ? "Parfait !"
-                    : politenessScore >= Math.round(total * 0.7)
-                    ? "Très bien !"
-                    : "Continue à t'entraîner !"}
-                </div>
-              </div>
-              <div className="nav-actions">
-                <button
-                  className="next-btn"
-                  onClick={() => {
-                    setPolitenessIndex(0);
-                    setPolitenessSelected(null);
-                    setPolitenessScore(0);
-                  }}
-                >
-                  🔄 Recommencer
-                </button>
-                <button className="next-btn" onClick={() => setView("menu")}>
-                  ← Retour au menu
-                </button>
-              </div>
-            </>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  if (view === "particles-quiz") {
-    const total = PARTICLE_QUESTIONS.length;
-    const qpa = PARTICLE_QUESTIONS[particleIndex];
-    const donePa = particleIndex >= total;
-    return (
-      <div className="root-wrap" style={rootStyle}>
-        <style>{injectedStyles}</style>
-        <div style={headerStyle}>Quiz · Particules & grammaire</div>
-        <div className="card">
-          {!donePa ? (
-            <>
-              <div style={{ marginBottom: 8, color: "rgba(255,255,255,0.6)", fontFamily: "'Rajdhani',sans-serif", fontSize: 13, letterSpacing: 2 }}>
-                Question {particleIndex + 1} / {total}
-              </div>
-              <div style={{ marginBottom: 4, fontSize: 18, color: "#e5e7eb" }}>
-                {qpa.sentence}
-              </div>
-              <div style={{ marginBottom: 12, fontSize: 14, color: "rgba(255,255,255,0.7)" }}>{qpa.fr}</div>
-              {qpa.options.map((opt, idx) => {
-                let cls = "option-btn";
-                if (particleSelected !== null) {
-                  if (idx === qpa.correctIndex) cls += " correct";
-                  else if (idx === particleSelected && idx !== qpa.correctIndex) cls += " wrong";
-                }
-                return (
-                  <button
-                    key={opt + idx}
-                    className={cls}
-                    onClick={() => {
-                      if (particleSelected !== null) return;
-                      setParticleSelected(idx);
-                      if (idx === qpa.correctIndex) {
-                        setParticleScore((s) => s + 1);
-                      }
-                    }}
-                    disabled={particleSelected !== null}
-                  >
-                    {opt}
-                  </button>
-                );
-              })}
-              {particleSelected !== null && (
-                <>
-                  <div style={{ marginTop: 10, fontSize: 13, color: "rgba(255,255,255,0.8)" }}>{qpa.explanation}</div>
-                  <div className="nav-actions" style={{ marginTop: 12 }}>
-                    <button
-                      className="next-btn"
-                      onClick={() => {
-                        const next = particleIndex + 1;
-                        setParticleIndex(next);
-                        setParticleSelected(null);
-                      }}
-                    >
-                      {particleIndex + 1 >= total ? "Voir le score →" : "Question suivante →"}
-                    </button>
-                  </div>
-                </>
-              )}
-            </>
-          ) : (
-            <>
-              <div style={{ textAlign: "center", marginBottom: 20 }}>
-                <div className="score-circle">
-                  <div style={{ color: "#fff", fontSize: 32, fontWeight: 700 }}>{particleScore}</div>
-                  <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 13 }}>/ {total}</div>
-                </div>
-                <div style={{ marginTop: 12, color: "#a78bfa", fontSize: 18, fontWeight: 700 }}>
-                  {particleScore === total
-                    ? "Parfait !"
-                    : particleScore >= Math.round(total * 0.7)
-                    ? "Très bien !"
-                    : "Continue à t'entraîner !"}
-                </div>
-              </div>
-              <div className="nav-actions">
-                <button
-                  className="next-btn"
-                  onClick={() => {
-                    setParticleIndex(0);
-                    setParticleSelected(null);
-                    setParticleScore(0);
-                  }}
-                >
-                  🔄 Recommencer
-                </button>
-                <button className="next-btn" onClick={() => setView("menu")}>
-                  ← Retour au menu
-                </button>
-              </div>
-            </>
-          )}
-        </div>
-      </div>
-    );
-  }
-
-  if (view === "dictation-quiz") {
-    const total = DICTATION_QUESTIONS.length;
-    const qd = DICTATION_QUESTIONS[dictationIndex];
-    const doneD = dictationIndex >= total;
-    return (
-      <div className="root-wrap" style={rootStyle}>
-        <style>{injectedStyles}</style>
-        <div style={headerStyle}>Quiz · Dictée vers Hangul</div>
-        <div className="card">
-          {!doneD ? (
-            <>
-              <div style={{ marginBottom: 8, color: "rgba(255,255,255,0.6)", fontFamily: "'Rajdhani',sans-serif", fontSize: 13, letterSpacing: 2 }}>
-                Question {dictationIndex + 1} / {total}
-              </div>
-              <div style={{ marginBottom: 16, fontSize: 18, color: "#e5e7eb" }}>{qd.fr}</div>
-              {qd.options.map((opt, idx) => {
-                let cls = "option-btn";
-                if (dictationSelected !== null) {
-                  if (idx === qd.correctIndex) cls += " correct";
-                  else if (idx === dictationSelected && idx !== qd.correctIndex) cls += " wrong";
-                }
-                return (
-                  <button
-                    key={opt + idx}
-                    className={cls}
-                    onClick={() => {
-                      if (dictationSelected !== null) return;
-                      setDictationSelected(idx);
-                      if (idx === qd.correctIndex) {
-                        setDictationScore((s) => s + 1);
-                      }
-                    }}
-                    disabled={dictationSelected !== null}
-                  >
-                    {opt}
-                  </button>
-                );
-              })}
-              {dictationSelected !== null && (
-                <div className="nav-actions" style={{ marginTop: 16 }}>
-                  <button
-                    className="next-btn"
-                    onClick={() => {
-                      const next = dictationIndex + 1;
-                      setDictationIndex(next);
-                      setDictationSelected(null);
-                    }}
-                  >
-                    {dictationIndex + 1 >= total ? "Voir le score →" : "Question suivante →"}
-                  </button>
-                </div>
-              )}
-            </>
-          ) : (
-            <>
-              <div style={{ textAlign: "center", marginBottom: 20 }}>
-                <div className="score-circle">
-                  <div style={{ color: "#fff", fontSize: 32, fontWeight: 700 }}>{dictationScore}</div>
-                  <div style={{ color: "rgba(255,255,255,0.4)", fontSize: 13 }}>/ {total}</div>
-                </div>
-                <div style={{ marginTop: 12, color: "#a78bfa", fontSize: 18, fontWeight: 700 }}>
-                  {dictationScore === total
-                    ? "Parfait !"
-                    : dictationScore >= Math.round(total * 0.7)
-                    ? "Très bien !"
-                    : "Continue à t'entraîner !"}
-                </div>
-              </div>
-              <div className="nav-actions">
-                <button
-                  className="next-btn"
-                  onClick={() => {
-                    setDictationIndex(0);
-                    setDictationSelected(null);
-                    setDictationScore(0);
-                  }}
-                >
-                  🔄 Recommencer
-                </button>
-                <button className="next-btn" onClick={() => setView("menu")}>
-                  ← Retour au menu
-                </button>
-              </div>
-            </>
-          )}
         </div>
       </div>
     );
