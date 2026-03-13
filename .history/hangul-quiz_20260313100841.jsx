@@ -217,30 +217,6 @@ const WORD_ORDER_QUESTIONS = [
     options: ["주말에 영화를 봐요", "영화를 주말에 봐요", "봐요 주말에 영화를"],
     correctIndex: 0,
   },
-  {
-    fr: "Je bois du café le matin.",
-    context: "Temps (matin) + objet + verbe.",
-    options: ["아침에 커피를 마셔요", "커피를 아침에 마셔요", "마셔요 아침에 커피를"],
-    correctIndex: 0,
-  },
-  {
-    fr: "Je vais au travail en bus.",
-    context: "Lieu de destination + moyen de transport.",
-    options: ["버스로 회사에 가요", "회사에 버스로 가요", "가요 버스로 회사에"],
-    correctIndex: 0,
-  },
-  {
-    fr: "Je fais du sport au parc.",
-    context: "Lieu (parc) + action.",
-    options: ["공원에서 운동해요", "운동해요 공원에서", "공원 운동해요 에서"],
-    correctIndex: 0,
-  },
-  {
-    fr: "Je lis un livre à la bibliothèque.",
-    context: "Lieu (bibliothèque) + objet + verbe.",
-    options: ["도서관에서 책을 읽어요", "책을 도서관에서 읽어요", "읽어요 책을 도서관에서"],
-    correctIndex: 0,
-  },
 ];
 const WORD_ORDER_LEVELS = Array.from({ length: 5 }, (_, i) => i + 1);
 
@@ -274,30 +250,6 @@ const POLITENESS_QUESTIONS = [
     context: "Annonce dans le métro (registre formel).",
     fr: "Nous arrivons à Séoul.",
     options: ["서울에 도착해요", "서울에 도착합니다", "서울에 도착해"],
-    correctIndex: 1,
-  },
-  {
-    context: "Tu parles à ton professeur après le cours.",
-    fr: "Merci pour le cours.",
-    options: ["수업 고마워요", "수업 감사합니다", "수업 고마워"],
-    correctIndex: 1,
-  },
-  {
-    context: "Tu envoies un message poli à un collègue.",
-    fr: "Excusez-moi de vous déranger.",
-    options: ["실례합니다", "실례해", "실례할게"],
-    correctIndex: 0,
-  },
-  {
-    context: "Tu parles gentiment à un enfant.",
-    fr: "Mange bien.",
-    options: ["맛있게 드세요", "맛있게 먹어", "맛있게 드십니다"],
-    correctIndex: 1,
-  },
-  {
-    context: "Annonce officielle dans une entreprise.",
-    fr: "Merci pour vos efforts.",
-    options: ["수고했어요", "수고하셨습니다", "수고해"],
     correctIndex: 1,
   },
 ];
@@ -340,34 +292,6 @@ const PARTICLE_QUESTIONS = [
     correctIndex: 0,
     explanation: "집에서 : lieu où l'action se déroule.",
   },
-  {
-    sentence: "친구__ 만나요.",
-    fr: "Je rencontre un ami.",
-    options: ["를", "은", "에", "이"],
-    correctIndex: 0,
-    explanation: "친구를 : objet direct (l'ami que l'on rencontre).",
-  },
-  {
-    sentence: "저녁__ 같이 먹을래요?",
-    fr: "On dîne ensemble ce soir ?",
-    options: ["에", "에서", "을", "는"],
-    correctIndex: 0,
-    explanation: "저녁에 : moment (le soir).",
-  },
-  {
-    sentence: "한국어__ 공부해요.",
-    fr: "J'étudie le coréen.",
-    options: ["를", "에", "에서", "이"],
-    correctIndex: 0,
-    explanation: "한국어를 : objet de l'étude.",
-  },
-  {
-    sentence: "친구__ 같이 가요.",
-    fr: "Je vais avec un ami.",
-    options: ["와", "에", "을", "이"],
-    correctIndex: 0,
-    explanation: "친구와 : avec un ami.",
-  },
 ];
 const PARTICLE_LEVELS = Array.from({ length: 5 }, (_, i) => i + 1);
 
@@ -397,26 +321,6 @@ const DICTATION_QUESTIONS = [
     fr: "On se voit demain",
     options: ["오늘 뭐 해요?", "내일 만나요", "다음 주에 봐요", "지금 가요"],
     correctIndex: 1,
-  },
-  {
-    fr: "Bonne nuit",
-    options: ["잘 자요", "안녕히 계세요", "수고하세요", "안녕하세요"],
-    correctIndex: 0,
-  },
-  {
-    fr: "À tout à l'heure",
-    options: ["조심히 가세요", "이따 봐요", "내일 만나요", "지금 가요"],
-    correctIndex: 1,
-  },
-  {
-    fr: "Je suis désolé(e)",
-    options: ["괜찮아요", "고마워요", "미안해요", "안녕히 가세요"],
-    correctIndex: 2,
-  },
-  {
-    fr: "Faites attention en rentrant",
-    options: ["조심히 가세요", "어서 와요", "다음에 봐요", "잘 자요"],
-    correctIndex: 0,
   },
 ];
 const DICTATION_LEVELS = Array.from({ length: 5 }, (_, i) => i + 1);
