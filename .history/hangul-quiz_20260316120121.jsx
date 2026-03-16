@@ -1871,6 +1871,146 @@ export default function HangulQuiz() {
     ]);
   }
 
+  if (view === "word-order-levels") {
+    return (
+      <div className="root-wrap" style={rootStyle}>
+        <style>{injectedStyles}</style>
+        <div style={headerStyle}>Ordre des mots · Choisir un niveau</div>
+        <div className="nav-actions">
+          <button className="next-btn" onClick={() => setView("menu")}>
+            ← Retour
+          </button>
+          <button className="next-btn" onClick={() => setView("word-order-info")} style={{ width: "auto", padding: "8px 16px", marginBottom: 0 }}>
+            ℹ️ Explications
+          </button>
+        </div>
+        <div className="level-grid" style={levelGridStyle}>
+          {WORD_ORDER_LEVELS.map((level) => (
+            <button
+              key={level}
+              className="level-btn"
+              onClick={() => {
+                setWordOrderLevel(level);
+                setWordOrderIndex(0);
+                setWordOrderSelected(null);
+                setWordOrderScore(0);
+                setView("word-order-quiz");
+              }}
+              style={levelBtnStyle}
+            >
+              <span>Niveau {level}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (view === "politeness-levels") {
+    return (
+      <div className="root-wrap" style={rootStyle}>
+        <style>{injectedStyles}</style>
+        <div style={headerStyle}>Politesse / registres · Choisir un niveau</div>
+        <div className="nav-actions">
+          <button className="next-btn" onClick={() => setView("menu")}>
+            ← Retour
+          </button>
+          <button className="next-btn" onClick={() => setView("politeness-info")} style={{ width: "auto", padding: "8px 16px", marginBottom: 0 }}>
+            ℹ️ Explications
+          </button>
+        </div>
+        <div className="level-grid" style={levelGridStyle}>
+          {POLITENESS_LEVELS.map((level) => (
+            <button
+              key={level}
+              className="level-btn"
+              onClick={() => {
+                setPolitenessLevel(level);
+                setPolitenessIndex(0);
+                setPolitenessSelected(null);
+                setPolitenessScore(0);
+                setView("politeness-quiz");
+              }}
+              style={levelBtnStyle}
+            >
+              <span>Niveau {level}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (view === "particles-levels") {
+    return (
+      <div className="root-wrap" style={rootStyle}>
+        <style>{injectedStyles}</style>
+        <div style={headerStyle}>Particules & grammaire · Choisir un niveau</div>
+        <div className="nav-actions">
+          <button className="next-btn" onClick={() => setView("menu")}>
+            ← Retour
+          </button>
+          <button className="next-btn" onClick={() => setView("particles-info")} style={{ width: "auto", padding: "8px 16px", marginBottom: 0 }}>
+            ℹ️ Explications
+          </button>
+        </div>
+        <div className="level-grid" style={levelGridStyle}>
+          {PARTICLE_LEVELS.map((level) => (
+            <button
+              key={level}
+              className="level-btn"
+              onClick={() => {
+                setParticleLevel(level);
+                setParticleIndex(0);
+                setParticleSelected(null);
+                setParticleScore(0);
+                setView("particles-quiz");
+              }}
+              style={levelBtnStyle}
+            >
+              <span>Niveau {level}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  if (view === "dictation-levels") {
+    return (
+      <div className="root-wrap" style={rootStyle}>
+        <style>{injectedStyles}</style>
+        <div style={headerStyle}>Dictée → Hangul · Choisir un niveau</div>
+        <div className="nav-actions">
+          <button className="next-btn" onClick={() => setView("menu")}>
+            ← Retour
+          </button>
+          <button className="next-btn" onClick={() => setView("dictation-info")} style={{ width: "auto", padding: "8px 16px", marginBottom: 0 }}>
+            ℹ️ Explications
+          </button>
+        </div>
+        <div className="level-grid" style={levelGridStyle}>
+          {DICTATION_LEVELS.map((level) => (
+            <button
+              key={level}
+              className="level-btn"
+              onClick={() => {
+                setDictationLevel(level);
+                setDictationIndex(0);
+                setDictationSelected(null);
+                setDictationScore(0);
+                setView("dictation-quiz");
+              }}
+              style={levelBtnStyle}
+            >
+              <span>Niveau {level}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
   function handleNext() {
     const totalCorrect = score + (selected === q?.answer ? 1 : 0);
     if (current + 1 >= quizActive.length) {
@@ -2110,146 +2250,6 @@ export default function HangulQuiz() {
       .particle-row { padding: 8px 12px; font-size: 13px; }
     }
   `;
-
-  if (view === "word-order-levels") {
-    return (
-      <div className="root-wrap" style={rootStyle}>
-        <style>{injectedStyles}</style>
-        <div style={headerStyle}>Ordre des mots · Choisir un niveau</div>
-        <div className="nav-actions">
-          <button className="next-btn" onClick={() => setView("menu")}>
-            ← Retour
-          </button>
-          <button className="next-btn" onClick={() => setView("word-order-info")} style={{ width: "auto", padding: "8px 16px", marginBottom: 0 }}>
-            Info / exemples
-          </button>
-        </div>
-        <div className="level-grid" style={levelGridStyle}>
-          {WORD_ORDER_LEVELS.map((level) => (
-            <button
-              key={level}
-              className="level-btn"
-              onClick={() => {
-                setWordOrderLevel(level);
-                setWordOrderIndex(0);
-                setWordOrderSelected(null);
-                setWordOrderScore(0);
-                setView("word-order-quiz");
-              }}
-              style={levelBtnStyle}
-            >
-              <span>Niveau {level}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (view === "politeness-levels") {
-    return (
-      <div className="root-wrap" style={rootStyle}>
-        <style>{injectedStyles}</style>
-        <div style={headerStyle}>Politesse / registres · Choisir un niveau</div>
-        <div className="nav-actions">
-          <button className="next-btn" onClick={() => setView("menu")}>
-            ← Retour
-          </button>
-          <button className="next-btn" onClick={() => setView("politeness-info")} style={{ width: "auto", padding: "8px 16px", marginBottom: 0 }}>
-            Info / exemples
-          </button>
-        </div>
-        <div className="level-grid" style={levelGridStyle}>
-          {POLITENESS_LEVELS.map((level) => (
-            <button
-              key={level}
-              className="level-btn"
-              onClick={() => {
-                setPolitenessLevel(level);
-                setPolitenessIndex(0);
-                setPolitenessSelected(null);
-                setPolitenessScore(0);
-                setView("politeness-quiz");
-              }}
-              style={levelBtnStyle}
-            >
-              <span>Niveau {level}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (view === "particles-levels") {
-    return (
-      <div className="root-wrap" style={rootStyle}>
-        <style>{injectedStyles}</style>
-        <div style={headerStyle}>Particules & grammaire · Choisir un niveau</div>
-        <div className="nav-actions">
-          <button className="next-btn" onClick={() => setView("menu")}>
-            ← Retour
-          </button>
-          <button className="next-btn" onClick={() => setView("particles-info")} style={{ width: "auto", padding: "8px 16px", marginBottom: 0 }}>
-            Info / exemples
-          </button>
-        </div>
-        <div className="level-grid" style={levelGridStyle}>
-          {PARTICLE_LEVELS.map((level) => (
-            <button
-              key={level}
-              className="level-btn"
-              onClick={() => {
-                setParticleLevel(level);
-                setParticleIndex(0);
-                setParticleSelected(null);
-                setParticleScore(0);
-                setView("particles-quiz");
-              }}
-              style={levelBtnStyle}
-            >
-              <span>Niveau {level}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  if (view === "dictation-levels") {
-    return (
-      <div className="root-wrap" style={rootStyle}>
-        <style>{injectedStyles}</style>
-        <div style={headerStyle}>Dictée → Hangul · Choisir un niveau</div>
-        <div className="nav-actions">
-          <button className="next-btn" onClick={() => setView("menu")}>
-            ← Retour
-          </button>
-          <button className="next-btn" onClick={() => setView("dictation-info")} style={{ width: "auto", padding: "8px 16px", marginBottom: 0 }}>
-            Info / exemples
-          </button>
-        </div>
-        <div className="level-grid" style={levelGridStyle}>
-          {DICTATION_LEVELS.map((level) => (
-            <button
-              key={level}
-              className="level-btn"
-              onClick={() => {
-                setDictationLevel(level);
-                setDictationIndex(0);
-                setDictationSelected(null);
-                setDictationScore(0);
-                setView("dictation-quiz");
-              }}
-              style={levelBtnStyle}
-            >
-              <span>Niveau {level}</span>
-            </button>
-          ))}
-        </div>
-      </div>
-    );
-  }
 
   if (view === "menu") {
     return (
